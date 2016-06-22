@@ -1671,7 +1671,7 @@ zMzMrAE82DIzMzMzM2sAD7bMzMzMzMwawIMtMzMzMzOzBvh/KvOzNF0PlaMAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: Max depth of 3. As more training points are added the training and testing scores start to converge towards the score of ~0.8. Adding more training points might not necessarily benefit the model. As can be seen in the graph as number of training points increases the changes in the score vary less and less. </strong></p>
+<p><strong>Answer: Max depth of 3. As more training points are added the training and testing scores start to converge towards the score of ~0.8 with the training score gradually decreasing over time and the testing score increasing over time. Adding more training points might not necessarily benefit the model. As can be seen in the graph as number of training points increases the changes in the score vary less and less. </strong></p>
 
 </div>
 </div>
@@ -2190,7 +2190,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: There is high bias when the model max depth is 1 and there is high variance at a max depth of 10. A high bias occurs when the model is underfitted or in other words has a low score. The lowest score occurs at a max depth of one. High variance occurs when the model is oversensitive and overfits the model. At the max depth of 10, the training score is almost 1 which likely means it is overfitted. </strong></p>
+<p><strong>Answer: There is high bias when the model max depth is 1 and there is high variance at a max depth of 10. A high bias occurs when the model is underfitted or in other words has a low score for the training score. The lowest score for the traing set occurs at a max depth of one with a score of ~0.45 for the training set and ~0.3 for the validation set. High variance occurs when the model is oversensitive and overfits the model. At the max depth of 10, the training score is almost 1 which likely means it is overfitted. This can be confirmed by looking at the validation score at that depth which is significantly lower at 0.7. As there is greater divergence between the training and validaiton scores, there is greater variance. </strong></p>
 
 </div>
 </div>
@@ -2262,7 +2262,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: In K-fold validation, the data is divided into K integers with one of those intervals used as test data and the remaining as training. This is done K times and each time the training data shifts intervals. This results in more accurate results from the model than just splitting the data once. Cross validation can evaluate performance in grid search. **</strong></p>
+<p><strong>Answer: In K-fold validation, the data is divided into K integers with one of those intervals used as test data and the remaining as training. This is done K times and each time the training data shifts intervals. This results in more accurate results from the model than just splitting the data once. This is because when we just split the data once we reduce the number of samples that can be used by the learning model leaving outcomes from the model to the randomness in the assignment of training/testing pair. But in the K-fold method, all of the data set gets used for both training and testing but the problem is that this is much more computationally intensive.**</strong></p>
 
 </div>
 </div>
@@ -2481,15 +2481,15 @@ Predicted selling price for Client 3&apos;s home: $933,975.00
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**</p>
-<p>Answer:</p>
+<p>**
+Answer:</p>
 <ul>
 <li>Predicted selling price for Client 1's home is 346,500</li>
 <li>Predicted selling price for Client 2's home is 284,200</li>
 <li>Predicted selling price for Client 3's home is 933,975</li>
 </ul>
-<p>I believe this model makes sense given the respective features.</p>
-<p>**</p>
+<p><strong>
+I believe this model makes sense given the respective features. The median house prices for the dataset is 438,900. When we look at Client 3, we see a house price of 933,975. The price is well above the median and the reason for that can be justified with the the features. There are a total of 8 rooms and the household net worth is in the top 7th percentile. It also has the best student to teacher ratio. For Client 2 the house prices is 284,200. The household networth is close to the 50th percentile with 55% of households outside the neighborhood having a higher net worth. This alone would make the price of the house fall close to the mean but the student-teacher ratio is high indicating the schools in that area may not be as good. Lastly client 1 lives in a neighborhood where the household net worth is in the top 34th percentile indicating an upper middle class neighborhood. It has a student teacher of 15 to 1 indicating a better school system than client 2. It also have more rooms. These factors may justify the price increase relative to client 2's house. It is important to note that the model is sensitive. With the range in house prices being 100k over ten trials. I would have expected client 1 and 2s houses to fall closer to the mean but the sensitivity must be taken into account.</strong></p>
 
 </div>
 </div>
