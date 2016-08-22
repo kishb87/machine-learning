@@ -341,7 +341,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># Extract feature columns</span>
@@ -423,7 +423,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -494,7 +494,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -562,9 +562,11 @@ Testing set has 95 samples.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:
-I will use naive bayes, k-nearest neighbor, and SVM classifiers for this model. In brief, naive bayes allows us to determine a best hypothesis given data. It assumes that each variable is conditionally indepdent of each other hence "naive". It can be used for classification because the hypothesis can be used to determine which classification to assign to an input given it's feature set. There can be a major drawback to Naive Bayes. Rather than trying to calculate the values of each attribute value, it assumes that the attributes are conditionally independent of each other. This is a major assumption that does not usually occur in real data. However in datasets where the assumption holds, the algorithm can do well.</p>
-<p>In KNN classification, the model is the entire training set. There is no generalization happening. Therefore it is non-parametric. The way predictions are made is by searching through the entire training set for the "k" most similar instances. To determine which of the k instances in the training dataset are most similar to a new input, a distance measurement is used (typically Euclidian distance).In classification, you take the mode class value i.e. the most occurring within the distance range and assign that classification to the input. One advantage of using KNN is that no assumptions are made about the data in the learning process. There are two problems with k-Nearest Neighbor that come to mind. The first is using the entire data set as the model. This can be computationally intensive. With parametric models, a general equation is created in the learning process and predictions are made using the parametric equation. With a non-parametric model like k-Nearest, a search through the dataset has to be performed for each input to the model. In addition, there is the "curse of dimensionality" with an algorithm like k-Nearest. For each new feature added to the model or for each new potential attribute added to a feature, the volume of the input space increases exponentially i.e. points will become further and further away from each other not only making inferences difficult but also computationally intensive.</p>
-<p>An SVM can be best explained using a specific kind of classifier that employs a SVM called Maximal-Margin Classifier. The input variables in your data form an n-dimensional space. For example, if you have two input variables, you for a 2D space. Then there is a hyperplane that splits the input variable space. Using SVM, a hyperplane is selected to best separate the points in the input variable space by their class. So for two dimensions, you can assign a class 0 and a class 1. All of our input points can be separated by this line. The learning of the hyperplane can be done by the kernel of the SVM. For instance, a linear kernel SVM uses a simple distance measurement between new data and the support vectors. A major advantage of using SVM is in the flexibility with the margin. You can loosen the restrictions allowing some data points to be classified incorrectly in order to have a more generalized model or you can have the margins fit closely to the data (but risk overfitting). It's up to you. A major drawback of SVM is in the fact that a kernel must be selected in order to perform learning. An inappropriate kernel can result in either high bias or variance with the hyper plane being too sensitive to the points in the training data (variance) or the hyperplane not being sensitive enough to the training data (bias).</p>
+I will use naive bayes, k-nearest neighbor, and SVM classifiers for this model.</p>
+<p>In brief, naive bayes allows us to determine a best hypothesis given data. It assumes that each variable is conditionally indepdent of each other hence "naive". It can be used for classification because the hypothesis can be used to determine which classification to assign to an input given it's feature set. There can be a major drawback to Naive Bayes. Rather than trying to calculate the values of each attribute value, it assumes that the attributes are conditionally independent of each other. This is a major assumption that does not usually occur in real data. However in datasets where the assumption holds, the algorithm can do well. I chose naive bayes for this dataset mainly because it is a computationally efficient model compared to the others. I expect it to perform faster than the other two models.
+Naive Bayes has been used in the media industry to classify text-based content by subject material successfully.</p>
+<p>In KNN classification, the model is the entire training set. There is no generalization happening. Therefore it is non-parametric. The way predictions are made is by searching through the entire training set for the "k" most similar instances. To determine which of the k instances in the training dataset are most similar to a new input, a distance measurement is used (typically Euclidian distance).In classification, you take the mode class value i.e. the most occurring within the distance range and assign that classification to the input. One advantage of using KNN is that no assumptions are made about the data in the learning process. There are two problems with k-Nearest Neighbor that come to mind. The first is using the entire data set as the model. This can be computationally intensive. With parametric models, a general equation is created in the learning process and predictions are made using the parametric equation. With a non-parametric model like k-Nearest, a search through the dataset has to be performed for each input to the model. In addition, there is the "curse of dimensionality" with an algorithm like k-Nearest. For each new feature added to the model or for each new potential attribute added to a feature, the volume of the input space increases exponentially i.e. points will become further and further away from each other not only making inferences difficult but also computationally intensive. I chose KNN because the dataset provided is consistent with low dimentionality. KNN performs best when the dataset is complete and consistent. In this dataset, there are no missing attributes or incomplete information. This dataset also has relatively few features and input labels thus having low dimensionality compares to models with thousands of features and labels. This means that the model should output results faster. An application for KNN is in the finance industry to predict future stock prices.</p>
+<p>An SVM can be best explained using a specific kind of classifier that employs a SVM called Maximal-Margin Classifier. The input variables in your data form an n-dimensional space. For example, if you have two input variables, you form a 2D space. Then there is a hyperplane that splits the input variable space. Using SVM, a hyperplane is selected to best separate the points in the input variable space by their class. So for two dimensions, you can assign a class 0 and a class 1. All of our input points can be separated by this line. The learning of the hyperplane can be done by the kernel of the SVM. For instance, a linear kernel SVM uses a simple distance measurement between new data and the support vectors. A major advantage of using SVM is in the flexibility with the margin. You can loosen the restrictions allowing some data points to be classified incorrectly in order to have a more generalized model or you can have the margins fit closely to the data (but risk overfitting). It's up to you. A major drawback of SVM is in the fact that a kernel must be selected in order to perform learning. An inappropriate kernel can result in either high bias or variance with the hyper plane being too sensitive to the points in the training data (variance) or the hyperplane not being sensitive enough to the training data (bias). I chose to try SVM because it is primarily designed for binary classification (although with adjustments multi-classification can be performed). In our case, the model classifies an input as either needing intervention or not needing it. Classifying facial expressions in videos is an example of SVM being used in industry. More broadly speaking, it can be used for sentiment analysis in text, video, and speech.</p>
 <p>**</p>
 
 </div>
@@ -590,7 +592,7 @@ I will use naive bayes, k-nearest neighbor, and SVM classifiers for this model. 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -663,7 +665,7 @@ I will use naive bayes, k-nearest neighbor, and SVM classifiers for this model. 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -678,7 +680,7 @@ I will use naive bayes, k-nearest neighbor, and SVM classifiers for this model. 
 <span class="c1"># TODO: Initialize the three models</span>
 <span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">clf_A</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
 <span class="n">clf_B</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">clf_C</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
 <span class="n">clf_C</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -716,58 +718,58 @@ I will use naive bayes, k-nearest neighbor, and SVM classifiers for this model. 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a GaussianNB using a training set size of 100. . .
-Trained model in 0.0013 seconds
-Made predictions in 0.0005 seconds.
+Trained model in 0.0007 seconds
+Made predictions in 0.0003 seconds.
 F1 score for training set: 0.5000.
-Made predictions in 0.0006 seconds.
+Made predictions in 0.0003 seconds.
 F1 score for test set: 0.2619.
 Training a GaussianNB using a training set size of 200. . .
-Trained model in 0.0017 seconds
-Made predictions in 0.0026 seconds.
+Trained model in 0.0008 seconds
+Made predictions in 0.0004 seconds.
 F1 score for training set: 0.7903.
-Made predictions in 0.0006 seconds.
+Made predictions in 0.0003 seconds.
 F1 score for test set: 0.7481.
 Training a GaussianNB using a training set size of 300. . .
-Trained model in 0.0014 seconds
-Made predictions in 0.0006 seconds.
-F1 score for training set: 0.7789.
+Trained model in 0.0008 seconds
 Made predictions in 0.0005 seconds.
+F1 score for training set: 0.7789.
+Made predictions in 0.0004 seconds.
 F1 score for test set: 0.7794.
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0020 seconds
-Made predictions in 0.0016 seconds.
+Trained model in 0.0016 seconds
+Made predictions in 0.0009 seconds.
 F1 score for training set: 0.8366.
-Made predictions in 0.0013 seconds.
+Made predictions in 0.0008 seconds.
 F1 score for test set: 0.8228.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0045 seconds
-Made predictions in 0.0036 seconds.
+Trained model in 0.0032 seconds
+Made predictions in 0.0024 seconds.
 F1 score for training set: 0.8552.
-Made predictions in 0.0018 seconds.
+Made predictions in 0.0012 seconds.
 F1 score for test set: 0.7947.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0116 seconds
-Made predictions in 0.0073 seconds.
+Trained model in 0.0065 seconds
+Made predictions in 0.0048 seconds.
 F1 score for training set: 0.8615.
-Made predictions in 0.0029 seconds.
+Made predictions in 0.0018 seconds.
 F1 score for test set: 0.8079.
 Training a KNeighborsClassifier using a training set size of 100. . .
-Trained model in 0.0010 seconds
-Made predictions in 0.0229 seconds.
+Trained model in 0.0005 seconds
+Made predictions in 0.0022 seconds.
 F1 score for training set: 0.8108.
-Made predictions in 0.0041 seconds.
+Made predictions in 0.0012 seconds.
 F1 score for test set: 0.7763.
 Training a KNeighborsClassifier using a training set size of 200. . .
-Trained model in 0.0012 seconds
-Made predictions in 0.0057 seconds.
+Trained model in 0.0006 seconds
+Made predictions in 0.0034 seconds.
 F1 score for training set: 0.8333.
-Made predictions in 0.0029 seconds.
+Made predictions in 0.0019 seconds.
 F1 score for test set: 0.7794.
 Training a KNeighborsClassifier using a training set size of 300. . .
-Trained model in 0.0009 seconds
-Made predictions in 0.0103 seconds.
+Trained model in 0.0007 seconds
+Made predictions in 0.0056 seconds.
 F1 score for training set: 0.8421.
-Made predictions in 0.0043 seconds.
+Made predictions in 0.0024 seconds.
 F1 score for test set: 0.7714.
 </pre>
 </div>
@@ -839,22 +841,22 @@ F1 score for test set: 0.7714.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0016</td>
-<td style="text-align:center">0.0013</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0009</td>
 <td style="text-align:center">0.8366</td>
 <td style="text-align:center">0.8228</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0036</td>
-<td style="text-align:center">0.0018</td>
+<td style="text-align:center">0.0029</td>
+<td style="text-align:center">0.0014</td>
 <td style="text-align:center">0.8552</td>
 <td style="text-align:center">0.7947</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0073</td>
-<td style="text-align:center">0.0029</td>
+<td style="text-align:center">0.0050</td>
+<td style="text-align:center">0.0019</td>
 <td style="text-align:center">0.8615</td>
 <td style="text-align:center">0.8079</td>
 </tr>
@@ -943,7 +945,15 @@ F1 score for test set: 0.7714.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: Using an SVM model, we can seperate students into ones that need intervention and ones that do not need intervention given the attributes provided for each student in the dataset. The SVM essentially usings something called a "kernal" which allows for a clear seperation of the two groups of student in the given dataset. It then creates a general model based on it's understanding of the model. You can then apply that model to specific students, and then our model can determine if that student should be classified as needing intervention or not. </strong></p>
+<p>Using an SVM model, we can separate students into ones that need intervention and ones that do not need it. A hyperplane (also called decision boundary) is what separates the data into the two classifications. When looking at the graph below, the green sheet in the middle represents the hyperplane. This graph shows a dataset in three dimensions.
+<img src="img/greenplane.png" width="350">
+In a 2D format, the data would be represented like the figure below. Instead of seeing a hyperplane in this figure, you see what is known as a decision boundary. Everything above the decision boundary is classified as "red" while everything below the decision boundary is classified as "blue".   The dotted lines represent the supporting hyperplane and the distance from one supporting hyperplane to the decision boundary is the margin.
+<img src="img/linsep_svm_linear.png" width="350">
+The learning algorithm finds the maximum margin that will allow for the separation of the data and points that intersect the margin lines are known as "support vectors". In the graph below, you can see one black support vector and two white ones.
+<img src="img/supportvectors.png" width="350">
+The SVM uses something called a "kernel" to help create this separation. A kernel is a mathematical function that essentially allows to make calculations significantly faster. It can be especially useful for instances where the data in not linearly separable. Like in this graph where it can be clearly seen that the data is best separated with a circular boundary. In this instance, the kernel does something called the "kernel trick" in which it implicitly transform a dataset into a higher dimension using no extra memory or computational time. In the higher dimension state space, the algorithm can now learn the decision boundary. As can be seen in the figure below. We can then apply that decision boundary to the original 2D state space.
+<img src="img/data_2d_to_3d_hyperplane.png" width="650">
+These terms together can describe a basic Support Vector Machine learning algorithm and this is what we used to separate students that need intervention from ones that do not.</p>
 
 </div>
 </div>
@@ -974,7 +984,7 @@ F1 score for test set: 0.7714.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO: Import &#39;gridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -992,7 +1002,7 @@ F1 score for test set: 0.7714.
 
 
 <span class="c1"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
@@ -1022,9 +1032,9 @@ F1 score for test set: 0.7714.
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0083 seconds.
+<pre>Made predictions in 0.0030 seconds.
 Tuned model has a training F1 score of 0.8288.
-Made predictions in 0.0020 seconds.
+Made predictions in 0.0011 seconds.
 Tuned model has a testing F1 score of 0.8105.
 </pre>
 </div>
@@ -1049,7 +1059,7 @@ Tuned model has a testing F1 score of 0.8105.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: The final F1 score was 0.8288 and 0.8105 for training an testing repsectively. The test score performed better (0.8105 for tuned vs. 0.8079 for untuned). However the F1 score was lower in the tuned model than the untuned model in training. (0.8105 for tuned vs. 0.8615 for untuned).</strong></p>
+<p><strong>Answer: The final F1 score was 0.8288 and 0.8105 for training and testing repsectively. The test score performed better (0.8105 for tuned vs. 0.8079 for untuned). However the F1 score was lower in the tuned model than the untuned model in training. (0.8105 for tuned vs. 0.8615 for untuned).</strong></p>
 
 </div>
 </div>
