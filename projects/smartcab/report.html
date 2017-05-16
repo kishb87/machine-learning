@@ -5060,11 +5060,11 @@ Reason: red light</p>
 <p><strong> For each state that has been recorded from the simulation, is the policy (the action with the highest value) correct for the given state? Are there any states where the policy is different than what would be expected from an optimal policy?</strong></p>
 <p>No. There are policies selected that are suboptimal. The agent did not learn to turn right on red lights which would have been most efficient and ideal.</p>
 <p>e.g.</p>
-<p>('right', 'red', 'right', True)
- -- forward : -35.84
- -- None : 1.38
- -- right : 0.00
- -- left : -35.34</p>
+<p>('right', 'red', None, False)
+ -- forward : -25.02
+ -- None : 2.13
+ -- right : 1.37
+ -- left : -10.63</p>
 <p>Smart cab could turn right here but is staying idle instead because None has the highest rewards.</p>
 <p><strong> Provide an example of a state and all state-action rewards recorded, and explain why it is the correct policy. </strong></p>
 <p>State = ('forward', 'green', None, False)
