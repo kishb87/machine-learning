@@ -54,6 +54,8 @@ class LearningAgent(Agent):
             self.sig2 = math.log((1.0-self.epsilon_tol)/self.epsilon_tol) - self.sig1
 
             self.epsilon = 1.0-1.0/(1.0+math.exp(self.sig1*self.trial+self.sig2))
+            # linear epsilon
+            # self.epsilon = self.epsilon - 0.05
             self.trial = self.trial + 1
 
         return None
@@ -92,7 +94,7 @@ class LearningAgent(Agent):
         ###########
         # Calculate the maximum Q-value of all actions for a given state
 
-        return max(self.Q[state], key=self.Q[state].get)
+        return max(self.Q[state].values())
 
 
 
@@ -105,8 +107,9 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-        if (state not in self.Q):
-        	self.Q[state] = dict().fromkeys(self.valid_actions, 0.0)
+        if self.learning:
+            if (state not in self.Q):
+            	self.Q[state] = dict().fromkeys(self.valid_actions, 0.0)
 
         return
 
@@ -129,7 +132,9 @@ class LearningAgent(Agent):
         action = random.choice(self.valid_actions)
 
         if self.learning:
-            action= np.random.choice([action, self.get_maxQ(state)], p=[self.epsilon, 1-self.epsilon])
+            if random.random() > self.epsilon:
+                action = random.choice(filter(lambda a: self.Q[state][a]==self.get_maxQ(state),
+                            self.Q[state].keys()))
 
         return action
 
@@ -144,7 +149,8 @@ class LearningAgent(Agent):
         ###########
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
-        self.Q[state][action] = ((1 - self.alpha) * self.Q[state][action]) + self.alpha * reward
+        if self.learning:
+            self.Q[state][action] = ((1 - self.alpha) * self.Q[state][action]) + self.alpha * reward
 
 
         return
